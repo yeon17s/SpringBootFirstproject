@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    // 1. 웹 기능
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 2. 머스테치 (화면)
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+
+    // 3. 데이터베이스 (JPA + H2)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+
+    // 👇 4. 테스트용 라이브러리는 이거 하나면 충분합니다! (Master Key)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // 5. 롬복 설치
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
