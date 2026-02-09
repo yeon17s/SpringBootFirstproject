@@ -27,6 +27,7 @@ dependencies {
 
     // 3. 데이터베이스 (JPA + H2)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     runtimeOnly 'com.h2database:h2'
 
     // 👇 4. 테스트용 라이브러리는 이거 하나면 충분합니다! (Master Key)
@@ -35,6 +36,8 @@ dependencies {
     // 5. 롬복 설치
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
